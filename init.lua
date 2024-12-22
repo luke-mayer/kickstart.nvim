@@ -425,6 +425,11 @@ require('lazy').setup({
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
+      -- Search all files
+      vim.keymap.set('n', '<leader>sa', function()
+        builtin.find_files { prompt_title = 'Search All Files From Home', cwd = '/home/lemayer/', no_igore = true, hidden = true }
+      end, { desc = '[S]earch [A]ll' })
+
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set('n', '<leader>s/', function()
@@ -843,20 +848,23 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    --'navarasu/onedark.nvim',
-    'olimorris/onedarkpro.nvim',
+    -- 'olimorris/onedarkpro.nvim',
+    'navarasu/onedark.nvim',
+    lazy = false,
     priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      require('onedarkpro').setup {
-        style = 'onedark_dark',
+    config = function()
+      require('onedark').setup {
+        style = 'darker',
+        code_style = { comments = 'none' },
+        highlights = { ['@variable'] = { fg = '#e55561' } },
       }
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'onedark_dark'
+      vim.cmd.colorscheme 'onedark'
 
       -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
+      -- vim.cmd.hi 'Comment gui=none'
     end,
   },
 
@@ -937,8 +945,8 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
