@@ -127,6 +127,14 @@ vim.api.nvim_set_keymap('n', '<C-l>', ':TmuxNavigateRight<CR>', { noremap = true
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- Makes <C-d> and <C-u> center the cursor on the page when used.
+vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+
+-- Makes <n> and <N> center the cursor on the page when used.
+vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
