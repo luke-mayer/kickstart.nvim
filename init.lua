@@ -606,7 +606,7 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
-        --
+        jsonls = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -618,7 +618,7 @@ require('lazy').setup({
                 callSnippet = 'Replace',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
@@ -641,6 +641,9 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        ensure_installed = {
+          'eslint@4.8.0',
+        },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -650,7 +653,27 @@ require('lazy').setup({
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
+
+          require('lspconfig').eslint.setup {
+            filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+            settings = {
+              workingDirectory = {
+                mode = 'auto',
+              },
+              format = { enable = true },
+              lint = { enable = true },
+            },
+            root_dir = function(fname)
+              return require('lspconfig').util.root_patter('.eslintrc', '.eslintrc.json', '.eslintrc.js', 'eslint.config.js', 'package.json')(fname)
+                or vim.loop.cwd()
+            end,
+          },
         },
+      }
+
+      vim.diagnostic.config {
+        virtual_text = true,
+        update_in_insert = true,
       }
     end,
   },
@@ -885,7 +908,24 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'javascript',
+        'go',
+        'json',
+        'yaml',
+        'sql',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -916,7 +956,7 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
+  -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
