@@ -27,6 +27,9 @@ vim.opt.breakindent = true
 -- Save undo history
 vim.opt.undofile = true
 
+-- Disable swapfiles
+vim.opt.swapfile = false
+
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -35,7 +38,7 @@ vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
-vim.opt.updatetime = 250
+vim.opt.updatetime = 150
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
@@ -64,6 +67,9 @@ vim.opt.scrolloff = 10
 vim.opt.colorcolumn = '80'
 
 -- Making tab size 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = false
-vim.opt_local.softtabstop = 4
+vim.expandtab = true
+
+vim.opt.termguicolors = true

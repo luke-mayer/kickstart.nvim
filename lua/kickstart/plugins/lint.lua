@@ -4,13 +4,14 @@ return {
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      local lint = require 'lint'
-
-      lint.linters_by_ft = {
-        javascript = { 'eslint' },
+      require('lint').linters_by_ft = {
+        javascript = { 'eslint_d' },
+        typescript = { 'eslint_d' },
+        javascriptreact = { 'eslint_d' },
+        typescriptreact = { 'eslint_d' },
         markdown = { 'markdownlint' },
-        -- python = { 'pylint' },
-        html = { 'htmlint' },
+        python = { 'pylint' },
+        html = { 'htmlhint' },
         -- sql = { 'sqlfluff' },
         go = { 'golangcilint' },
       }
@@ -57,14 +58,14 @@ return {
           -- avoid superfluous noise, notably within the handy LSP pop-ups that
           -- describe the hovered symbol using Markdown.
           if vim.opt_local.modifiable:get() then
-            lint.try_lint()
+            require('lint').try_lint()
           end
         end,
       })
 
       vim.keymap.set('n', '<leader>l', function()
-        lint.try_lint()
-      end, { desc = 'Trigger linting for current file' })
+        require('lint').try_lint()
+      end, { desc = '[L]inting for current file' })
     end,
   },
 }
