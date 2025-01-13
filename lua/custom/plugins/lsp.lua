@@ -26,6 +26,9 @@ return {
 
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
     },
     config = function()
       --    function will be executed to configure the current buffer
@@ -194,6 +197,7 @@ return {
         'htmlhint',
         'pylint',
         'eslint_d',
+        'goimports',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }

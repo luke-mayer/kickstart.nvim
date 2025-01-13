@@ -46,6 +46,7 @@ return {
         json = { 'prettierd' },
         markdown = { 'prettierd' },
         python = { 'isort', 'black' },
+        go = { 'gofmt', 'goimports' },
       },
     },
   },
