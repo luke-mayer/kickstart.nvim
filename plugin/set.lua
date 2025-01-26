@@ -66,6 +66,9 @@ vim.opt.scrolloff = 10
 -- Highlighting column at 80 characters.
 vim.opt.colorcolumn = '80'
 
+-- Turn off wrapping
+vim.opt.wrap = false
+
 -- Making tab size 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
