@@ -5,15 +5,16 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('lint').linters_by_ft = {
-        javascript = { 'eslint_d' },
-        typescript = { 'eslint_d' },
-        javascriptreact = { 'eslint_d' },
-        typescriptreact = { 'eslint_d' },
+        -- javascript = { 'eslint_d' },
+        -- typescript = { 'eslint_d' },
+        -- javascriptreact = { 'eslint_d' },
+        -- typescriptreact = { 'eslint_d' },
         markdown = { 'markdownlint' },
         python = { 'pylint' },
         html = { 'htmlhint' },
         -- sql = { 'sqlfluff' },
         go = { 'golangcilint' },
+        -- go = { 'staticcheck' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,

@@ -8,7 +8,7 @@ return {
       {
         '<leader>f',
         function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
+          require('conform').format { async = true, timeout_ms = 2500, lsp_format = 'fallback' }
         end,
         mode = '',
         desc = '[F]ormat buffer',
@@ -28,7 +28,7 @@ return {
           lsp_format_opt = 'fallback'
         end
         return {
-          timeout_ms = 500,
+          timeout_ms = 2500,
           lsp_format = lsp_format_opt,
         }
       end,
@@ -45,6 +45,7 @@ return {
         css = { 'prettierd' },
         json = { 'prettierd' },
         markdown = { 'prettierd' },
+        yaml = { 'prettierd' },
         python = { 'isort', 'black' },
         go = { 'gofmt', 'goimports' },
       },
