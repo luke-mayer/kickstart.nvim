@@ -18,8 +18,8 @@ vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true
 vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 
 -- Makes <n> and <N> center the cursor on the page when used.
-vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { noremap = true, silent = true })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -29,6 +29,11 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open diagnostic on current line' })
+
+-- copy to system clipboard
+vim.keymap.set('n', '<leader>y', '"+y')
+vim.keymap.set('v', '<leader>y', '"+y')
+vim.keymap.set('n', '<leader>Y', '"+Y')
 
 -- Control size of window splits
 vim.keymap.set('n', '<c-w>,', '<c-w>5<')
