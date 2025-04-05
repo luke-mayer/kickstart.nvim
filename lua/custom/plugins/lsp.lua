@@ -146,21 +146,22 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        gopls = {
-          settings = {
-            gopls = {
-              completeUnimported = true,
-              usePlaceholders = true,
-              analyses = {
-                unusedparams = true,
-              },
-            },
-          },
-        },
-        pyright = {},
+        --gopls = {
+        --  settings = {
+        --    gopls = {
+        --      completeUnimported = true,
+        --      usePlaceholders = true,
+        --      analyses = {
+        --        unusedparams = true,
+        --      },
+        --    },
+        --  },
+        --},
+        --pyright = {},
         ts_ls = {},
         jsonls = {},
         html = {},
+        prismals = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
@@ -189,16 +190,16 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'prettier',
-        'prettierd',
+        --'prettierd',
         'isort',
-        'black',
+        --'black',
         'markdownlint',
         --'golangci-lint',
-        'staticcheck',
+        --'staticcheck',
         'htmlhint',
-        'pylint',
+        --'pylint',
         'eslint_d',
-        'goimports',
+        --'goimports',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
