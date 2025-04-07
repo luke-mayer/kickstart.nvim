@@ -220,10 +220,19 @@ return {
         },
       }
 
+      local _border = 'rounded'
+
       vim.diagnostic.config {
         virtual_text = true,
+        float = {
+          border = _border,
+        },
         -- update_in_insert = true,
       }
+
+      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = _border,
+      })
     end,
   },
 }
