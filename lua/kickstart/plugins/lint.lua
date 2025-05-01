@@ -64,9 +64,9 @@ return {
         end,
       })
 
-      vim.keymap.set('n', '<leader>l', function()
-        require('lint').try_lint()
-      end, { desc = '[L]inting for current file' })
+      --  vim.keymap.set('n', '<leader>l', function()
+      --    require('lint').try_lint()
+      --  end, { desc = '[L]inting for current file' })
     end,
   },
 }
