@@ -85,6 +85,34 @@ return {
         end,
         desc = 'harpoon to file 9',
       },
+      {
+        '<leader><C-j>',
+        function()
+          require('harpoon'):list():replace_at(1)
+        end,
+        desc = 'harpoon replace file 1',
+      },
+      {
+        '<leader><C-k>',
+        function()
+          require('harpoon'):list():replace_at(2)
+        end,
+        desc = 'harpoon replace file 2',
+      },
+      {
+        '<leader><C-l>',
+        function()
+          require('harpoon'):list():replace_at(3)
+        end,
+        desc = 'harpoon replace file 3',
+      },
+      {
+        '<leader><C-;>',
+        function()
+          require('harpoon'):list():replace_at(4)
+        end,
+        desc = 'harpoon replace file 4',
+      },
     },
   },
 }
