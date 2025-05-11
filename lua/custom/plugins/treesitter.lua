@@ -3,6 +3,7 @@ return {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    branch = 'main',
     config = function()
       require('nvim-treesitter.configs').setup {
         -- main = 'nvim-treesitter.configs', -- Sets main module to use for opts
@@ -46,10 +47,10 @@ return {
               return true
             end
 
-            local max_filesize = 500 * 1024 -- 100 kb
+            local max_filesize = 500 * 1024 -- 500 kb
             local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
             if ok and stats and stats.size > max_filesize then
-              vim.notify('File larger than 100KB, treesitter disables for performance', vim.log.levels.WARN, { title = 'Treesitter' })
+              vim.notify('File larger than 500KB, treesitter disables for performance', vim.log.levels.WARN, { title = 'Treesitter' })
               return true
             end
           end,
