@@ -8,9 +8,6 @@ return {
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
         'nvim-telescope/telescope-fzf-native.nvim',
-        'nvim-telescope/telescope-smart-history.nvim',
-        'nvim-telescope/telescope-ui-select.nvim',
-        'kkharji/sqlite.lua',
 
         -- `build` is used to run some command when the plugin is installed/updated.
         -- This is only run then, not every time Neovim starts up.
@@ -64,10 +61,6 @@ return {
         extensions = {
           wrap_results = true,
           fzf = {},
-          history = {
-            path = vim.fs.joinpath(data, 'telescope_history.sqlit3'),
-            limit = 100,
-          },
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
@@ -76,7 +69,6 @@ return {
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
-      pcall(require('telescope').load_extension, 'smart_history')
       pcall(require('telescope').load_extension, 'ui-select')
 
       -- See `:help telescope.builtin`
