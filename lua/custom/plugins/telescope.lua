@@ -47,6 +47,8 @@ return {
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
 
+      local data = assert(vim.fn.stdpath 'data') --[[@as string]]
+
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
@@ -60,6 +62,12 @@ return {
         -- },
         -- pickers = {}
         extensions = {
+          wrap_results = true,
+          fzf = {},
+          history = {
+            path = vim.fs.joinpath(data, 'telescope_history.sqlit3'),
+            limit = 100,
+          },
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
@@ -68,6 +76,7 @@ return {
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
+      pcall(require('telescope').load_extension, 'smart_history')
       pcall(require('telescope').load_extension, 'ui-select')
 
       -- See `:help telescope.builtin`
