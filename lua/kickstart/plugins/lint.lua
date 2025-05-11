@@ -15,6 +15,7 @@ return {
         -- sql = { 'sqlfluff' },
         go = { 'golangcilint' },
         -- go = { 'staticcheck' },
+        yaml = { 'cfn_lint' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -64,9 +65,9 @@ return {
         end,
       })
 
-      --  vim.keymap.set('n', '<leader>l', function()
-      --    require('lint').try_lint()
-      --  end, { desc = '[L]inting for current file' })
+      vim.keymap.set('n', '<leader>ml', function()
+        require('lint').try_lint()
+      end, { desc = '[M]anual [L]inting for current file' })
     end,
   },
 }

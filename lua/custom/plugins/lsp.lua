@@ -209,6 +209,7 @@ return {
         --'pylint',
         'eslint_d',
         --'goimports',
+        'cfn-lint',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }

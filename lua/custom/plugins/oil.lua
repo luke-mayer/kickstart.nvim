@@ -11,6 +11,9 @@ return {
           ['<C-j>'] = false,
           ['<M-h>'] = 'actions.select_split',
         },
+        view_options = {
+          show_hidden = true,
+        },
       }
 
       -- Open parent directory in current window
