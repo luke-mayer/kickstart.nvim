@@ -10,7 +10,7 @@ return {
         -- javascriptreact = { 'eslint_d' },
         -- typescriptreact = { 'eslint_d' },
         markdown = { 'markdownlint' },
-        python = { 'pylint' },
+        python = { 'ruff' },
         html = { 'htmlhint' },
         -- sql = { 'sqlfluff' },
         go = { 'golangcilint' },

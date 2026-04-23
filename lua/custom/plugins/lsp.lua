@@ -166,7 +166,23 @@ return {
         --    },
         --  },
         --},
-        --pyright = {},
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              disableOrganizeImports = true, -- Using Ruff
+              analysis = {
+                ignore = { '*' }, -- Using Ruff
+                typeCheckingMode = 'standard',
+                extraPaths = { './python' },
+              },
+            },
+          },
+        },
+        ruff = {
+          settings = {
+            fixAll = true,
+          },
+        },
         ts_ls = {},
         jsonls = {},
         html = {},
@@ -200,7 +216,6 @@ return {
         'stylua', -- Used to format Lua code
         'prettier',
         --'prettierd',
-        'isort',
         --'black',
         'markdownlint',
         --'golangci-lint',

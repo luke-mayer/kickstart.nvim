@@ -46,7 +46,7 @@ return {
         json = { 'prettier' },
         markdown = { 'prettier' },
         yaml = { 'prettier' },
-        python = { 'isort', 'black' },
+        python = { 'ruff' },
         go = { 'gofmt', 'goimports' },
       },
     },
